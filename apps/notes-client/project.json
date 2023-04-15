@@ -24,7 +24,8 @@
       "executor": "@nrwl/vite:dev-server",
       "defaultConfiguration": "development",
       "options": {
-        "buildTarget": "notes-client:build"
+        "buildTarget": "notes-client:build",
+        "proxyConfig": "apps/notes-client/proxy.conf.json"
       },
       "configurations": {
         "development": {
