@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/vite:build",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/apps/notes-client"
@@ -55,7 +57,9 @@
     },
     "test": {
       "executor": "@nrwl/vite:test",
-      "outputs": ["coverage/apps/notes-client"],
+      "outputs": [
+        "coverage/apps/notes-client"
+      ],
       "options": {
         "passWithNoTests": true,
         "reportsDirectory": "../../coverage/apps/notes-client"
@@ -63,15 +67,60 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/notes-client/**/*.{ts,tsx,js,jsx}"]
+        "lintFilePatterns": [
+          "apps/notes-client/**/*.{ts,tsx,js,jsx}"
+        ]
       }
     },
     "serve-static": {
       "executor": "@nrwl/web:file-server",
       "options": {
         "buildTarget": "notes-client:build"
+      }
+    },
+    "storybook": {
+      "executor": "@nrwl/storybook:storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "apps/notes-client/.storybook",
+        "uiFramework": "@storybook/react"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@nrwl/storybook:build",
+      "outputs": [
+        "{options.outputDir}"
+      ],
+      "options": {
+        "outputDir": "dist/storybook/notes-client",
+        "configDir": "apps/notes-client/.storybook",
+        "uiFramework": "@storybook/react"
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "static-storybook": {
+      "executor": "@nrwl/web:file-server",
+      "options": {
+        "buildTarget": "notes-client:build-storybook",
+        "staticFilePath": "dist/storybook/notes-client"
+      },
+      "configurations": {
+        "ci": {
+          "buildTarget": "notes-client:build-storybook:ci"
+        }
       }
     }
   },
