@@ -2,7 +2,13 @@
   "name": "simple-notes",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start": "nx serve",
+    "build": "nx build",
+    "test": "nx test",
+    "start:api": "npm run start notes-server",
+    "start:client": "npm run start notes-client"
+  },
   "private": true,
   "dependencies": {
     "@swc/helpers": "~0.4.11",
