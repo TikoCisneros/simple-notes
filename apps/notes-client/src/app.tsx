@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.scss';
-import { Note } from '@simple-notes/models';
+
+import { INote } from '@simple-notes/models';
+import { Note } from './components';
 
 export function App() {
-  const [notes, setNotes] = useState<Note[]>([]);
+  const [notes, setNotes] = useState<INote[]>([]);
 
   useEffect(() => {
     fetch('/api/notes')
@@ -15,11 +15,18 @@ export function App() {
   }, []);
 
   return (
-    <ul>
-      {notes.map(({ id, text }: Note) => (
-        <li key={id}>{text}</li>
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '2rem',
+        padding: '2rem',
+      }}
+    >
+      {notes.map((note: INote, index) => (
+        <Note key={note.id} data={note} index={index} />
       ))}
-    </ul>
+    </div>
   );
 }
 

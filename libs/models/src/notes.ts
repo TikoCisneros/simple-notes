@@ -1,5 +1,7 @@
-export interface Note {
+export type TColor = 'orange' | 'yellow' | 'green';
+
+export interface INote {
   id: string;
   text: string;
-  stared: boolean;
+  color: TColor;
 }
