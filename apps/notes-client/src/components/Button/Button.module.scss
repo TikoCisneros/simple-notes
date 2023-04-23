@@ -10,15 +10,15 @@
   position: relative;
 
   &--orange {
-    background-color: orange;
+    background-color: $color-orange-40;
   }
 
   &--yellow {
-    background-color: yellow;
+    background-color: $color-yellow-40;
   }
 
   &--green {
-    background-color: greenyellow;
+    background-color: $color-lime-40;
   }
 
   &:hover {
