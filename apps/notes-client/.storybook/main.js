@@ -1,3 +1,4 @@
+const path = require('path');
 const { mergeConfig } = require('vite');
 const viteTsConfigPaths = require('vite-tsconfig-paths').default;
 
@@ -19,6 +20,19 @@ module.exports = {
           root: '../../../',
         }),
       ],
+      css: {
+        postcss: null,
+        preprocessorOptions: {
+          scss: {
+            additionalData: `
+                    @import "${path.resolve(
+                      __dirname,
+                      '../src/styles/index.scss'
+                    )}";
+                `,
+          },
+        },
+      },
     });
   },
 };
