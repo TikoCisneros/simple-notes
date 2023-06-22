@@ -1,0 +1,32 @@
+// ***** Breakpoints responsive ***** //
+$break-xs: 320px;
+$break-sm: 480px; // PHONE
+$break-md: 768px; // TABLET
+$break-lg: 992px; // DESKTOP
+$break-xl: 1200px;
+
+@mixin for-small-phones-only {
+  @media (max-width: $break-xs) {
+    @content;
+  }
+}
+@mixin for-phones-up {
+  @media (min-width: $break-sm) {
+    @content;
+  }
+}
+@mixin for-tablet-up {
+  @media (min-width: $break-md) {
+    @content;
+  }
+}
+@mixin for-desktop-up {
+  @media (min-width: $break-lg) {
+    @content;
+  }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: $break-xl) {
+    @content;
+  }
+}
